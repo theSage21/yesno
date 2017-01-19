@@ -41,15 +41,16 @@ print('\nRun classifier')
 ##########################################################
 
 x, le = np.array(x), LabelEncoder()
-y, estimator = le.fit_transform(y), RandomForestClassifier(n_jobs=-1, n_estimators=20)
+kwargs = dict(n_jobs=-1, n_estimators=30)
+y, estimator = le.fit_transform(y), RandomForestClassifier(**kwargs)
 print('X: {}, Y: {}\n'.format(x.shape, y.shape))
 
 print('-'*5, 'Confusion Matrix', '-'*5)
 cm = confusion_matrix(y, cross_val_predict(estimator, x, y))
-lines = ['```',str(datetime.now()), '', 'Confusion matrix']
+lines = ['```',str(datetime.now()), 'RF'+str(kwargs), '', 'Confusion matrix']
 for label, row in zip(le.classes_, cm):
     lines.append(label.zfill(5).replace('0', ' ') +  str(row / row.sum()))
-lines.append('```')
+lines.append('```'); lines.extend(['']*3)
 # Save performance to README file
 with open('README.md', 'a') as fl:
     fl.write('\n'.join(lines))
