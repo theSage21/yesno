@@ -3,6 +3,7 @@ import pickle
 import pandas as pd
 import numpy as np
 from scipy.fftpack import fft
+from datetime import datetime 
 from scipy.io import wavfile as wav
 from tqdm import tqdm
 from sklearn.ensemble import RandomForestClassifier
@@ -45,8 +46,14 @@ print('X: {}, Y: {}\n'.format(x.shape, y.shape))
 
 print('-'*5, 'Confusion Matrix', '-'*5)
 cm = confusion_matrix(y, cross_val_predict(estimator, x, y))
+lines = ['```',str(datetime.now()), '', 'Confusion matrix']
 for label, row in zip(le.classes_, cm):
-    print(label.zfill(5).replace('0', ' '), row / row.sum())
+    lines.append(label.zfill(5).replace('0', ' ') +  str(row / row.sum()))
+lines.append('```')
+# Save performance to README file
+with open('README.md', 'a') as fl:
+    fl.write('\n'.join(lines))
+print('\n'.join(lines))
 
 print('Fitting and saving to file')
 estimator.fit(x, y)
