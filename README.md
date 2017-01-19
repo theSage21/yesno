@@ -81,3 +81,18 @@ yes            |[ 0.03  0.02  0.95]
 ```
 
 
+```
+2017-01-19 15:28:42.902340
+OvR-RF{'n_estimators': 30, 'n_jobs': -1, 'class_weight': 'balanced'}
+
+
+DataCount
+{'__silence': 484, 'yes': 65, 'no': 65}
+
+Confusion matrix
+__silence      |[ 1.  0.  0.]
+no             |[ 0.03  0.97  0.  ]
+yes            |[ 0.06  0.02  0.92]
+```
+
+
