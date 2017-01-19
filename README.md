@@ -18,6 +18,9 @@ mkdir yes && cd yes
 
 # Record 100 samples of you saying yes
 python ../../record.py 100
+
+# Passively record 5 second samples
+python record.py
 ```
 
 To build the classifier you may do the following
