@@ -5,11 +5,12 @@ print('In absence of <no of recordings> it passively records 5 second slices for
 print('Usage: $python record.py <no of recordings>')
 
 command = 'arecord -r 44000 {}.wav'
+limit = list(filter(lambda x: 'wav' in x, os.listdir('.')))
+limit = len(list(sorted(limit)))
 try:
     sys.argv[1]
 except IndexError:
-    i = list(filter(lambda x: 'wav' in x, os.listdir('.')))
-    i = len(list(sorted(i)))
+    i = limit
     print('starting count at ', i)
     while True:
         i += 1
@@ -20,7 +21,7 @@ except IndexError:
                 print('timeout')
                 process.send_signal(2)
 else:
-    for i in range(int(sys.argv[1])):
+    for i in range(limit, int(sys.argv[1])):
         quit = input('Press q to quit. Press Ctrl+c to stop recording. Press Enter to start recording: ')
         if quit.strip() == 'q':
             print('Quitting')

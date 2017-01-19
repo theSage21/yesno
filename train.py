@@ -47,7 +47,7 @@ print('\nRun classifier')
 ##########################################################
 
 x, le = np.array(x), LabelEncoder()
-kwargs = dict(n_jobs=-1, n_estimators=30, class_weight='balanced')
+kwargs = dict(n_jobs=-1, n_estimators=100, class_weight='balanced')
 y, estimator = le.fit_transform(y), OneVsRestClassifier(RandomForestClassifier(**kwargs))
 print('X: {}, Y: {}\n'.format(x.shape, y.shape))
 
