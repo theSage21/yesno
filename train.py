@@ -22,8 +22,10 @@ print('Create dataframe')
 
 labels = list(os.listdir(data_dir))
 x, y = [], []
+datacount = {}
 for label in tqdm(labels, ncols=80, desc='Labels'):
     files = os.listdir(os.path.join(data_dir, label))
+    datacount[label] = len(files)
     for f_name in tqdm(files, ncols=80, desc='Recordings'):
         path = os.path.join(data_dir, label, f_name)
         try:
@@ -50,8 +52,9 @@ y, estimator = le.fit_transform(y), OneVsRestClassifier(RandomForestClassifier(*
 print('X: {}, Y: {}\n'.format(x.shape, y.shape))
 
 print('-'*5, 'Confusion Matrix', '-'*5)
+lines = ['```',str(datetime.now()), 'OvR-RF'+str(kwargs), '', '', 'DataCount',  str(datacount), '', 'Confusion matrix']
+
 cm = confusion_matrix(y, cross_val_predict(estimator, x, y))
-lines = ['```',str(datetime.now()), 'OvR-RF'+str(kwargs), '', 'Confusion matrix']
 for label, row in zip(le.classes_, cm):
     linestring = '{:15}|{}'.format(label, np.round(row / row.sum(), 2))
     lines.append(linestring)

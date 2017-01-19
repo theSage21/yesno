@@ -9,7 +9,7 @@ try:
     sys.argv[1]
 except IndexError:
     i = list(filter(lambda x: 'wav' in x, os.listdir('.')))
-    i = int(list(sorted(i))[-1].replace('.wav', ''))
+    i = len(list(sorted(i)))
     print('starting count at ', i)
     while True:
         i += 1
