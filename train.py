@@ -51,7 +51,7 @@ print('X: {}, Y: {}\n'.format(x.shape, y.shape))
 
 print('-'*5, 'Confusion Matrix', '-'*5)
 cm = confusion_matrix(y, cross_val_predict(estimator, x, y))
-lines = ['```',str(datetime.now()), 'RF'+str(kwargs), '', 'Confusion matrix']
+lines = ['```',str(datetime.now()), 'OvR-RF'+str(kwargs), '', 'Confusion matrix']
 for label, row in zip(le.classes_, cm):
     linestring = '{:15}|{}'.format(label, np.round(row / row.sum(), 2))
     lines.append(linestring)

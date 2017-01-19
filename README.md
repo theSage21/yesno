@@ -64,3 +64,14 @@ yes            |[ 0.02  0.03  0.95]
 ```
 
 
+```
+2017-01-19 14:02:45.102698
+OvR-RF{'class_weight': 'balanced', 'n_estimators': 30, 'n_jobs': -1}
+
+Confusion matrix
+__silence      |[ 0.94  0.06  0.  ]
+no             |[ 0.02  0.98  0.  ]
+yes            |[ 0.02  0.03  0.95]
+```
+
+
