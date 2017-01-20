@@ -176,3 +176,49 @@ yes            |[ 0.02  0.14  0.04  0.8 ]
 ```
 
 
+```
+2017-01-20 17:08:10.982897
+OvR-RF{'class_weight': 'balanced', 'n_jobs': -1, 'n_estimators': 100}
+
+
+DataCount
+{'yes': 100, 'no': 65, 'movies': 100, '__silence': 725}
+
+Confusion matrix
+__silence      |[ 1.  0.  0.  0.]
+movies         |[ 0.05  0.84  0.02  0.09]
+no             |[ 0.03  0.02  0.95  0.  ]
+yes            |[ 0.03  0.14  0.02  0.81]
+```
+
+
+```
+2017-01-20 17:09:44.718766
+OvR-RF{'class_weight': 'balanced', 'n_estimators': 100, 'n_jobs': -1}
+
+
+DataCount
+{'movies': 100, 'yes': 100, 'no': 65}
+
+Confusion matrix
+movies         |[ 0.84  0.02  0.14]
+no             |[ 0.02  0.97  0.02]
+yes            |[ 0.13  0.04  0.83]
+```
+
+
+```
+2017-01-20 17:10:43.239006
+OvR-RF{'class_weight': 'balanced', 'n_estimators': 40, 'n_jobs': -1}
+
+
+DataCount
+{'no': 65, 'movies': 100, 'yes': 100}
+
+Confusion matrix
+movies         |[ 0.85  0.02  0.13]
+no             |[ 0.02  0.97  0.02]
+yes            |[ 0.13  0.03  0.84]
+```
+
+
