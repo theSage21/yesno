@@ -17,21 +17,25 @@ mkdir data && cd data
 mkdir yes && cd yes
 
 # Record 100 samples of you saying yes
-python ../../record.py 100
+python ../../yesno.py 100
 
-# Passively record 5 second samples
-python record.py
+# Passively record 5 second samples infinitely until interrupted by pressing `Ctrl+C`
+python yesno.py record
 ```
 
 To build the classifier you may do the following
 
 ```bash
-python train.py
+python yesno.py train
 ```
 
 To predict the label of a given recording we can:
 
-`python predict.py recording.wav`
+`python yesno.py predict recording.wav`
+
+To  listen for audio and predict. Mainly to avoid having to import stuff again and again if you know that you will need it soon.
+
+`python yesno.py`
 
 All audio files in use must be having a sampling rate of 44000 Hz.
 
